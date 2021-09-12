@@ -69,19 +69,17 @@ function keysHandler(event) {
       break;
 
     case 'Operat':
-      if (firstVar) {
-        if (firstVar == '0.') {
-          firstVar = '0.0';
-        }
-        if (firstVar.substr(-1) == '.') {
-          firstVar += '0';
-        }
-        //   if (firstVar == '' && resDisplay.textContent != '0.00') {
-        //     firstVar = resDisplay.textContent;
-        //   }
-        operationSign = event.target.textContent;
-        calcDisplay.textContent = firstVar + operationSign;
+      if (firstVar == '0.') {
+        firstVar = '0.0';
       }
+      if (firstVar.substr(-1) == '.') {
+        firstVar += '0';
+      }
+      if (firstVar == '' && resDisplay.textContent != '0.00') {
+        firstVar = resDisplay.textContent;
+      }
+      operationSign = event.target.textContent;
+      calcDisplay.textContent = firstVar + operationSign;
       resDisplay.textContent = '';
       break;
 
