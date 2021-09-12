@@ -38,10 +38,16 @@ function keysHandler(event) {
 
     case 'Num':
       if (!operationSign) {
+        if (firstVar == '' && event.target.textContent == '.') {
+          firstVar = '0';
+        }
         firstVar += event.target.textContent;
         calcDisplay.textContent = firstVar;
         resDisplay.textContent = '';
       } else {
+        if (secondVar == '' && event.target.textContent == '.') {
+          secondVar = '0';
+        }
         secondVar += event.target.textContent;
         calcDisplay.textContent = firstVar + operationSign + secondVar;
         resDisplay.textContent = '';
@@ -63,7 +69,13 @@ function keysHandler(event) {
       break;
 
     case 'Operat':
-      if (!operationSign) {
+      if (!operationSign && firstVar) {
+        if (firstVar == '0.') {
+          firstVar = '0.0';
+        }
+        if (firstVar.substr(-1) == '.') {
+          firstVar += '0';
+        }
         operationSign += event.target.textContent;
         calcDisplay.textContent = firstVar + operationSign;
       }
@@ -76,9 +88,15 @@ function keysHandler(event) {
           if (+firstVar + +secondVar > 9999999999) {
             calcDisplay.textContent = 'экран переполнен';
           } else {
+            if (secondVar == '0.') {
+              secondVar = '0.0';
+            }
+            if (secondVar.substr(-1) == '.') {
+              secondVar += '0';
+            }
             resDisplay.textContent = String(+firstVar + +secondVar);
             calcDisplay.textContent = String(
-              firstVar + operationSign + secondVar
+              firstVar + operationSign + secondVar + ' = '
             );
           }
 
@@ -91,9 +109,15 @@ function keysHandler(event) {
           if (+firstVar - +secondVar > 9999999999) {
             calcDisplay.textContent = 'экран переполнен';
           } else {
+            if (secondVar == '0.') {
+              secondVar = '0.0';
+            }
+            if (secondVar.substr(-1) == '.') {
+              secondVar += '0';
+            }
             resDisplay.textContent = String(+firstVar - +secondVar);
             calcDisplay.textContent = String(
-              firstVar + operationSign + secondVar
+              firstVar + operationSign + secondVar + ' = '
             );
           }
 
@@ -106,9 +130,15 @@ function keysHandler(event) {
           if (+firstVar * +secondVar > 9999999999) {
             calcDisplay.textContent = 'экран переполнен';
           } else {
+            if (secondVar == '0.') {
+              secondVar = '0.0';
+            }
+            if (secondVar.substr(-1) == '.') {
+              secondVar += '0';
+            }
             resDisplay.textContent = String(+firstVar * +secondVar);
             calcDisplay.textContent = String(
-              firstVar + operationSign + secondVar
+              firstVar + operationSign + secondVar + ' = '
             );
           }
 
@@ -121,9 +151,15 @@ function keysHandler(event) {
           if (+firstVar / +secondVar > 9999999999) {
             calcDisplay.textContent = 'экран переполнен';
           } else {
+            if (secondVar == '0.') {
+              secondVar = '0.0';
+            }
+            if (secondVar.substr(-1) == '.') {
+              secondVar += '0';
+            }
             resDisplay.textContent = String(+firstVar / +secondVar);
             calcDisplay.textContent = String(
-              firstVar + operationSign + secondVar
+              firstVar + operationSign + secondVar + ' = '
             );
           }
 
