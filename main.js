@@ -69,14 +69,17 @@ function keysHandler(event) {
       break;
 
     case 'Operat':
-      if (!operationSign && firstVar) {
+      if (firstVar) {
         if (firstVar == '0.') {
           firstVar = '0.0';
         }
         if (firstVar.substr(-1) == '.') {
           firstVar += '0';
         }
-        operationSign += event.target.textContent;
+        //   if (firstVar == '' && resDisplay.textContent != '0.00') {
+        //     firstVar = resDisplay.textContent;
+        //   }
+        operationSign = event.target.textContent;
         calcDisplay.textContent = firstVar + operationSign;
       }
       resDisplay.textContent = '';
@@ -88,6 +91,9 @@ function keysHandler(event) {
           if (+firstVar + +secondVar > 9999999999) {
             calcDisplay.textContent = 'экран переполнен';
           } else {
+            if (secondVar == '') {
+              secondVar = '0';
+            }
             if (secondVar == '0.') {
               secondVar = '0.0';
             }
@@ -109,6 +115,9 @@ function keysHandler(event) {
           if (+firstVar - +secondVar > 9999999999) {
             calcDisplay.textContent = 'экран переполнен';
           } else {
+            if (secondVar == '') {
+              secondVar = '0';
+            }
             if (secondVar == '0.') {
               secondVar = '0.0';
             }
@@ -130,6 +139,9 @@ function keysHandler(event) {
           if (+firstVar * +secondVar > 9999999999) {
             calcDisplay.textContent = 'экран переполнен';
           } else {
+            if (secondVar == '') {
+              secondVar = '0';
+            }
             if (secondVar == '0.') {
               secondVar = '0.0';
             }
@@ -151,6 +163,9 @@ function keysHandler(event) {
           if (+firstVar / +secondVar > 9999999999) {
             calcDisplay.textContent = 'экран переполнен';
           } else {
+            if (secondVar == '') {
+              secondVar = '0';
+            }
             if (secondVar == '0.') {
               secondVar = '0.0';
             }
